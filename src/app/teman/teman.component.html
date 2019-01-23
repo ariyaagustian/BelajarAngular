@@ -1,0 +1,12 @@
+<app-teman-add
+  [temandiEdit]=temanEdit
+  (temanAdded)="onTemanAdded($event)">
+</app-teman-add>
+
+
+<app-teman-list
+  [temanParent]=temanList
+  (dariChildParent)="onTemanEdit($event)">
+</app-teman-list>
+
+
