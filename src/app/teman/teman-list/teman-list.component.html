@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let tmn of temanParent, let i=index" appHoverHighlight>
+    <tr *ngFor="let tmn of temanParent, let i=index" [appHoverHighlight] = "{background: 'yellow', text:'red'}" >
       <th scope="col">{{i + 1}}</th>
       <th scope="col">{{tmn.nama}}</th>
       <th scope="col">{{tmn.email}}</th>

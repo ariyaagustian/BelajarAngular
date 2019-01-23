@@ -1,16 +1,26 @@
-import {Directive, ElementRef, HostBinding, Input, OnInit, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2} from '@angular/core';
 
 @Directive({
   selector: '[appHoverHighlight]'
 })
-export class HoverHighlightDirective implements OnInit {
+export class HoverHighlightDirective /* implements OnInit */{
 
-  // @HostBinding('style.color') textColor: String;
-  // @Input('appHoverHighlight') highLightColor: (Background: string, text: string);
+  @HostBinding('style.color') textColor: String;
+  @Input('appHoverHighlight') highLightColor: {background: string, text: string};
   constructor(private elRef: ElementRef, private render: Renderer2) { }
 
-  ngOnInit(): void {
-    this.render.setStyle(this.elRef.nativeElement, 'background-color', 'yellow');
+  // ngOnInit(): void {
+  //   this.render.setStyle(this.elRef.nativeElement, 'background-color', 'yellow');
+  // }
+
+  @HostListener("mouseover") mouseMasuk(evenData: Event) {
+    this.render.setStyle(this.elRef.nativeElement, 'background-color', this.highLightColor.background);
+    this.textColor = this.highLightColor.text;
+  }
+
+  @HostListener("mouseleave") mouseKeluar(evenData: Event) {
+    this.render.setStyle(this.elRef.nativeElement, 'background-color', 'transparent');
+    this.textColor = 'black';
   }
 
 }
