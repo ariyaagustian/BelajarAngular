@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {FormGroup, FormControl, Validators, Form} from '@angular/forms';
 import {ContactUsModel} from './contact-us.model';
 
 @Component({
@@ -14,8 +14,8 @@ export class ContactUsComponent implements OnInit {
 
   ngOnInit() {
     this.contactForm = new FormGroup({
-      username: new FormControl(null, [Validators.required]),
-      usermail: new FormControl(null, [Validators.required]),
+      username: new FormControl(null, [Validators.required, this.cekIsEmpty]),
+      usermail: new FormControl(null, [Validators.required, this.cekIsEmpty]),
       usermsg: new FormControl(null, [])
     });
   }
@@ -26,5 +26,11 @@ export class ContactUsComponent implements OnInit {
     contactUsModel.userMail = this.contactForm.get('usermail').value;
     contactUsModel.userMsg = this.contactForm.get('usermsg').value;
     console.log(contactUsModel);
+  }
+
+  cekIsEmpty(control: FormControl): {[s: string]: boolean} {
+    if (control.value && control.value.trim().length === 0) {
+      return {'blank': true};
+    }return null;
   }
 }
