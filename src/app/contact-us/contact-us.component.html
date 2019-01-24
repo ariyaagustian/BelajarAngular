@@ -1,0 +1,29 @@
+<div>
+  <form [formGroup]="contactForm" (ngSubmit)="kirim()" id="form-group">
+    <div class="form-group row" style="text-align: center" >
+      <div class="col-sm-6 offset-3">
+        <label for="form-group" >Contact Us</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6 offset-3">
+        <input type="text" [formControlName]="'username'" class="form-control" placeholder="username" name="username">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6 offset-3">
+        <input type="email" [formControlName]="'usermail'" class="form-control" placeholder="email" name="email">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6 offset-3">
+        <textarea [formControlName]="'usermsg'" class="form-control" placeholder="Input Your Message Here" name="usermsg"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6 offset-3">
+        <button type="submit" class="btn btn-success btn-block">Kirim</button>
+      </div>
+    </div>
+  </form>
+</div>

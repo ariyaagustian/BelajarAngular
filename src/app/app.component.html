@@ -1,16 +1,5 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-    <br/>
-    Halo {{ nama }}
-  </h1>
-<div class="col-sm-12">
-  <input type="text" class="form-control"  [(ngModel)]="nama" disabled="true" /> <br/>
-
+<app-header></app-header>
+<br><br>
+<div>
+  <router-outlet></router-outlet>
 </div>
-
-</div>
-
-<app-teman></app-teman>
-<router-outlet></router-outlet>
